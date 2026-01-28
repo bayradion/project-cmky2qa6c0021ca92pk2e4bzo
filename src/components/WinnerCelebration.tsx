@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated, Dimensions } from 'react-native';
 import { theme } from '../constants/theme';
 import { Player } from '../types';
+import Button from './Button';
+import { useGameStore } from '../store/gameStore';
 
 interface WinnerCelebrationProps {
   winner: Player | null;
@@ -14,6 +16,7 @@ export default function WinnerCelebration({ winner, visible }: WinnerCelebration
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const scaleAnim = useRef(new Animated.Value(0.5)).current;
   const bounceAnim = useRef(new Animated.Value(0)).current;
+  const { resetGame } = useGameStore();
 
   useEffect(() => {
     if (visible && winner) {
@@ -54,6 +57,24 @@ export default function WinnerCelebration({ winner, visible }: WinnerCelebration
     }
   }, [visible, winner, fadeAnim, scaleAnim, bounceAnim]);
 
+  const handleClose = () => {
+    // Animate out then reset
+    Animated.parallel([
+      Animated.timing(fadeAnim, {
+        toValue: 0,
+        duration: 200,
+        useNativeDriver: false,
+      }),
+      Animated.timing(scaleAnim, {
+        toValue: 0.5,
+        duration: 200,
+        useNativeDriver: false,
+      }),
+    ]).start(() => {
+      resetGame();
+    });
+  };
+
   if (!visible || !winner) {
     return null;
   }
@@ -90,6 +111,15 @@ export default function WinnerCelebration({ winner, visible }: WinnerCelebration
           <Text style={styles.confettiEmoji}>🎊</Text>
           <Text style={styles.confettiEmoji}>🥳</Text>
         </View>
+        
+        <View style={styles.buttonContainer}>
+          <Button
+            title="Play Again"
+            onPress={handleClose}
+            size="large"
+            style={styles.playAgainButton}
+          />
+        </View>
       </Animated.View>
     </Animated.View>
   );
@@ -114,6 +144,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     ...theme.shadows.large,
     minWidth: 250,
+    maxWidth: width * 0.8,
   },
   emoji: {
     fontSize: 64,
@@ -124,19 +155,29 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: theme.colors.text,
     marginBottom: theme.spacing.xs,
+    textAlign: 'center',
   },
   congratsText: {
     fontSize: 24,
     fontWeight: '600',
     color: theme.colors.success,
     marginBottom: theme.spacing.lg,
+    textAlign: 'center',
   },
   confetti: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
+    marginBottom: theme.spacing.lg,
   },
   confettiEmoji: {
     fontSize: 24,
+  },
+  buttonContainer: {
+    width: '100%',
+    marginTop: theme.spacing.md,
+  },
+  playAgainButton: {
+    width: '100%',
   },
 });
