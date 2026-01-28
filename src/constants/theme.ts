@@ -1,0 +1,50 @@
+export const theme = {
+  colors: {
+    primary: '#6366F1',
+    secondary: '#8B5CF6',
+    background: '#F8FAFC',
+    surface: '#FFFFFF',
+    text: '#1E293B',
+    textSecondary: '#64748B',
+    success: '#10B981',
+    warning: '#F59E0B',
+    error: '#EF4444',
+    playerX: '#EF4444',
+    playerO: '#3B82F6',
+    winnerGlow: '#FCD34D',
+  },
+  spacing: {
+    xs: 4,
+    sm: 8,
+    md: 16,
+    lg: 24,
+    xl: 32,
+    xxl: 48,
+  },
+  borderRadius: {
+    sm: 8,
+    md: 12,
+    lg: 16,
+    xl: 24,
+  },
+  shadows: {
+    small: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+    },
+    medium: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.15,
+      shadowRadius: 8,
+    },
+    large: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 8 },
+      shadowOpacity: 0.2,
+      shadowRadius: 16,
+    },
+  },
+};
