@@ -1,7 +1,7 @@
 export const theme = {
   colors: {
-    primary: '#6366F1',
-    secondary: '#8B5CF6',
+    primary: '#22C55E', // Green-500
+    secondary: '#16A34A', // Green-600
     background: '#F8FAFC',
     surface: '#FFFFFF',
     text: '#1E293B',
@@ -12,6 +12,9 @@ export const theme = {
     playerX: '#EF4444',
     playerO: '#3B82F6',
     winnerGlow: '#FCD34D',
+    // Green variations for buttons
+    primaryLight: '#86EFAC', // Green-300
+    primaryDark: '#15803D', // Green-700
   },
   spacing: {
     xs: 4,

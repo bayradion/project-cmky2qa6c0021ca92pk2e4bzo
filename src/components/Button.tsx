@@ -94,15 +94,15 @@ const styles = StyleSheet.create({
     minHeight: 52,
   },
   buttonPrimary: {
-    backgroundColor: theme.colors.primary,
+    backgroundColor: theme.colors.primary, // Green-500
   },
   buttonSecondary: {
-    backgroundColor: theme.colors.secondary,
+    backgroundColor: theme.colors.secondary, // Green-600
   },
   buttonOutline: {
     backgroundColor: 'transparent',
     borderWidth: 2,
-    borderColor: theme.colors.primary,
+    borderColor: theme.colors.primary, // Green-500
   },
   buttonDisabled: {
     backgroundColor: theme.colors.textSecondary,
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
   },
   textOutline: {
-    color: theme.colors.primary,
+    color: theme.colors.primary, // Green-500
   },
   textDisabled: {
     color: '#FFFFFF',
